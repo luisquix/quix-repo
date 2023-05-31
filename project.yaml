@@ -9,6 +9,13 @@ deployments: []
 
 # This section describes the Topics of the data pipeline
 topics:
+- name: deste
+  persisted: false
+  configuration:
+    partitions: 2
+    replicationFactor: 2
+    retentionInMinutes: 60
+    retentionInBytes: 52428800
 - name: test
   persisted: false
   configuration:
