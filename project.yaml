@@ -9,7 +9,7 @@ deployments: []
 
 # This section describes the Topics of the data pipeline
 topics:
-- name: sfdsfsf
+- name: test
   persisted: false
   configuration:
     partitions: 2
@@ -23,7 +23,7 @@ topics:
     replicationFactor: 2
     retentionInMinutes: 60
     retentionInBytes: 52428800
-- name: test
+- name: sfdsfsf
   persisted: false
   configuration:
     partitions: 2
@@ -32,4 +32,20 @@ topics:
     retentionInBytes: 52428800
 
 # This section describes the Applications of the data pipeline
-applications: []
+applications:
+- path: test
+  name: test
+  language: python
+  variables:
+  - name: input
+    inputType: InputTopic
+    description: This is the input topic to read data from
+    defaultValue: ''
+    required: true
+  - name: output
+    inputType: OutputTopic
+    description: This is the output topic to write data to
+    defaultValue: output-topic
+    required: true
+  dockerfile: build/dockerfile
+  runEntryPoint: main.py
